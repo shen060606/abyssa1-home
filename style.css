@@ -221,3 +221,28 @@ body[data-theme="light"] .about.section:after{content:"";position:absolute;z-ind
 @media(max-width:900px){body[data-theme="light"] .article,body[data-theme="light"] .article:first-child{grid-template-columns:75px minmax(0,1fr) 72px 14px;padding:16px 15px;gap:9px}}
 @media(max-width:650px){body[data-theme="light"] .writing.section{padding-top:54px;padding-bottom:36px}body[data-theme="light"] .article-list{grid-template-columns:1fr;gap:10px}body[data-theme="light"] .article,body[data-theme="light"] .article:first-child{grid-template-columns:72px minmax(0,1fr) 14px;gap:9px;min-height:72px;padding:14px 13px}body[data-theme="light"] .article-type{display:none}body[data-theme="light"] .article-title{font-size:11px}body[data-theme="light"] .about.section{margin:10px 0 36px;padding:28px 18px;border-radius:13px}body[data-theme="light"] .about.section:after{right:-24%;opacity:.65}}
 @media(prefers-reduced-motion:reduce){body[data-theme="light"] .article{transition:none}}
+
+/* Mobile-specific contrast and character placement. */
+@media(max-width:650px){
+  body[data-theme="light"] .topbar nav.open{background:rgba(255,249,247,.98);border-color:#5e46501f;box-shadow:0 14px 30px #30243720;backdrop-filter:blur(14px)}
+  body[data-theme="light"] .topbar nav.open a{color:#332c36}
+  body[data-theme="light"] .topbar nav.open a:hover,body[data-theme="light"] .topbar nav.open .active{color:#a63e56}
+  body[data-theme="light"] .topbar nav.open .active:after{background:#d84f68;box-shadow:0 0 9px #d84f6870}
+  body[data-theme="light"] .menu-toggle{color:#302b35}
+  .hero{min-height:630px;padding-bottom:80px}
+  .chibi-decoration{z-index:3;overflow:visible}
+  .chibi{display:block;width:60px;max-height:92px}
+  .chibi-kurumi{left:-8px;right:auto;top:auto;bottom:86px}
+  .chibi-yoshino{right:58px;left:auto;top:auto;bottom:86px}
+  .chibi-tohka,.chibi-origami,.chibi-kotori,.chibi-miku,.chibi-natsumi,.chibi-nia{display:none}
+}
+
+/* On phones, give each content area its own pair of interactive characters. */
+.mobile-chibi-pair{display:none}
+@media(max-width:650px){
+  .mobile-chibi-pair{display:flex;position:relative;grid-column:1/-1;align-items:flex-end;justify-content:space-between;height:92px;margin:12px 4px 0;padding:0 12px;overflow:visible;pointer-events:none}
+  .mobile-chibi-pair .chibi{position:relative;inset:auto;left:auto;right:auto;top:auto;bottom:auto;display:block;flex:0 0 66px;width:66px;height:84px;max-height:84px;pointer-events:auto;filter:drop-shadow(0 8px 12px #1b183030)}
+  .mobile-chibi-pair .chibi img{width:100%;height:100%;object-fit:contain}
+  .mobile-chibi-pair .chibi:nth-child(2){animation-delay:-1.8s}
+  .about .mobile-chibi-pair{margin-top:4px}
+}
