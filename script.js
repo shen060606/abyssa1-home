@@ -70,7 +70,7 @@ applyTheme();
 const musicButton = document.querySelector('#music-toggle');
 const backgroundAudio = document.querySelector('#background-audio');
 const controlToast = document.querySelector('#control-toast');
-const MUSIC_SOURCE = '';
+const MUSIC_SOURCE = 'assets/music/unheard-flower-piano.mp3';
 let toastTimer;
 
 function showControlToast(message) {
