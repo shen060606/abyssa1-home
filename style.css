@@ -283,3 +283,33 @@ body[data-theme="light"] .music-volume-toggle{border-color:#806a762c;background:
 .music-dock{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
 .music-player.controls-open .music-dock{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 @media(hover:hover) and (pointer:fine){.music-player:hover .music-dock,.music-player:focus-within .music-dock{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}}
+
+/* Floating return-to-top control */
+.back-to-top-float{width:42px;height:42px;display:grid;place-items:center;border:1px solid #ffffff35;border-radius:50%;background:#18141ce8;color:#ffd69a;font:22px/1 var(--sans);box-shadow:0 8px 24px #0006;backdrop-filter:blur(12px);cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s,border-color .2s}
+.back-to-top-float.is-visible{opacity:1;transform:translateY(0)}
+.back-to-top-float[hidden]{display:none}
+.back-to-top-float:hover{border-color:#ff9a9b;transform:translateY(-3px)}
+.back-to-top-float:focus-visible{outline:2px solid #ffd69a;outline-offset:4px}
+body[data-theme="light"] .back-to-top-float{border-color:#8d758052;background:#fffaf0e8;color:#c3535e;box-shadow:0 8px 24px #41354a2c}
+@media(max-width:650px){.back-to-top-float{width:38px;height:38px;font-size:20px}}
+@media(prefers-reduced-motion:reduce){.back-to-top-float{transition:none}}
+
+/* Reveal a concise project brief when a visitor explores a card. */
+.project-hover-hint{margin-top:10px;color:#aaa0ad;font:8px var(--mono);letter-spacing:.04em;transition:opacity .18s}body[data-theme="light"] .project-hover-hint{color:#827684}
+.project-card:hover .project-hover-hint,.project-card:focus-visible .project-hover-hint{opacity:0}
+.project-detail{position:absolute;z-index:6;inset:0;display:flex;flex-direction:column;justify-content:center;padding:24px 20px;background:linear-gradient(145deg,#101820f5,#17141ff7 72%,#241a29f5);color:#f5edf0;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+.project-card:hover .project-detail,.project-card:focus-visible .project-detail{opacity:1;transform:translateY(0)}
+.project-detail-kicker{color:var(--card-accent);font:8px var(--mono);letter-spacing:.14em}
+.project-detail h3{margin:9px 0 16px;color:inherit;font-size:18px}
+.project-detail dl{display:grid;gap:12px;margin:0}
+.project-detail dl div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;align-items:start}
+.project-detail dt{color:#ffaaa4;font-size:10px;font-weight:600}
+.project-detail dd{margin:0;color:#e0d9df;font-size:10px;line-height:1.75}
+.project-detail-hint{margin-top:18px;padding-top:11px;border-top:1px solid #ffffff24;color:#aaa0ad;font:8px var(--mono);letter-spacing:.03em}
+body[data-theme="light"] .project-detail{background:linear-gradient(145deg,#fffaf7f7,#f4eff7f8 72%,#edeffaF7);color:#2e2933}
+body[data-theme="light"] .project-detail dt{color:color-mix(in srgb,var(--card-accent) 82%,#422d46)}
+body[data-theme="light"] .project-detail dd{color:#514b58}
+body[data-theme="light"] .project-detail-hint{border-color:#55445824;color:#766d7a}
+@media(hover:none),(pointer:coarse){.project-detail{position:relative;inset:auto;display:flex;margin:16px -20px -20px;padding:18px 20px 16px;opacity:1;transform:none;pointer-events:auto;border-top:1px solid #ffffff20}.project-hover-hint{display:none}}
+@media(max-width:650px){.project-detail{position:relative;inset:auto;display:flex;margin:16px -17px -17px;padding:18px 17px 16px;opacity:1;transform:none;pointer-events:auto;border-top:1px solid #ffffff20;background:linear-gradient(145deg,#101820f2,#17141ff5 72%,#241a29f5)}.project-detail h3{font-size:16px;margin:7px 0 12px}.project-detail dl{gap:9px}.project-detail dd{font-size:10px}.project-detail-hint{margin-top:14px}body[data-theme="light"] .project-detail{background:linear-gradient(145deg,#fffaf7,#f4eff7 72%,#edeffa);border-color:#5d4b5520}}
+@media(prefers-reduced-motion:reduce){.project-detail{transition:none}}

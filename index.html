@@ -57,19 +57,50 @@
             <div class="card-top"><span class="project-number">01 / JOURNAL</span><span class="arrow-circle">↗</span></div>
             <div class="blog-visual"><div class="paper-shadow"></div><div class="paper"><span class="paper-date">NOTES & THOUGHTS</span><b>保持好奇，<br>持续做点东西。</b><i></i><i></i><i class="short-line"></i><span class="paper-stamp">ABYSSA1<br>2026</span></div><span class="blog-flower">✳</span></div>
             <div class="card-info"><div><h3>个人博客</h3><p>写下踩过的坑、学到的东西，还有那些还没想明白的问题。</p></div><span class="status"><i></i> 持续更新</span></div>
-            <div class="card-tags"><span>技术笔记</span><span>随想</span><span>写作</span></div>
+            <div class="card-tags"><span>技术笔记</span><span>随想</span><span>写作</span></div><span class="project-hover-hint">悬停查看项目介绍 ↗</span>
+            <div class="project-detail" aria-label="个人博客项目介绍">
+              <span class="project-detail-kicker">PROJECT OVERVIEW</span>
+              <h3>个人博客</h3>
+              <dl>
+                <div><dt>用途</dt><dd>记录开发过程、技术实践和日常思考。</dd></div>
+                <div><dt>技术栈</dt><dd>Hexo 静态站点生成器 · Butterfly 主题</dd></div>
+                <div><dt>实现方式</dt><dd>用 Markdown 编写文章，由 Hexo 生成静态页面，再通过 Butterfly 展示文章、分类和标签。</dd></div>
+              </dl>
+              <span class="project-detail-hint">点击访问博客 ↗</span>
+            </div>
           </a>
           <a class="project-card card-rag" href="http://rag.abyssa1.cloud" target="_blank" rel="noopener noreferrer">
             <div class="card-top"><span class="project-number">02 / KNOWLEDGE</span><span class="arrow-circle">↗</span></div>
             <div class="rag-visual"><div class="doc doc-one">notes.md <span>•••</span></div><div class="doc doc-two">research.pdf <span>↗</span></div><div class="doc doc-three">ideas.txt <span>•••</span></div><div class="spark">✳</div><div class="rag-core">RAG<span>AI</span></div><div class="rag-line"></div></div>
             <div class="card-info"><div><h3>私有知识库</h3><p>让知识真正成为答案。把文档交给 AI，和自己的资料自然对话。</p></div><span class="status"><i></i> 已上线</span></div>
-            <div class="card-tags"><span>Golang</span><span>RAG</span><span>Qdrant</span></div>
+            <div class="card-tags"><span>Golang</span><span>RAG</span><span>Qdrant</span></div><span class="project-hover-hint">悬停查看项目介绍 ↗</span>
+            <div class="project-detail" aria-label="私有知识库项目介绍">
+              <span class="project-detail-kicker">PROJECT OVERVIEW</span>
+              <h3>私有知识库</h3>
+              <dl>
+                <div><dt>用途</dt><dd>上传个人资料，检索相关内容并获得带参考来源的 AI 回答。</dd></div>
+                <div><dt>技术栈</dt><dd>Go · Gin · MySQL · Redis · Qdrant · DeepSeek</dd></div>
+                <div><dt>核心功能</dt><dd>支持 TXT、Markdown、PDF；文档切分与向量检索；多轮对话和 SSE 流式回答。</dd></div>
+                <div><dt>项目亮点</dt><dd>Session 登录鉴权；区分私有与公共知识库；按用户隔离文档、聊天记录和向量数据。</dd></div>
+              </dl>
+              <span class="project-detail-hint">点击访问项目 ↗</span>
+            </div>
           </a>
           <a class="project-card card-agent" href="https://agent.abyssa1.cloud" target="_blank" rel="noopener noreferrer">
             <div class="card-top"><span class="project-number">03 / EXPERIMENT</span><span class="arrow-circle">↗</span></div>
             <div class="agent-visual"><div class="agent-orbit orbit-a"></div><div class="agent-orbit orbit-b"></div><div class="agent-node node-a">⌘</div><div class="agent-node node-b">✦</div><div class="agent-node node-c">↗</div><div class="agent-center">A<span>·</span></div><div class="agent-caption">THINK → ACT → LEARN</div></div>
             <div class="card-info"><div><h3>Agent 实验室</h3><p>探索能理解目标、调用工具并完成任务的智能助手。</p></div><span class="status status-muted"><i></i> 构思中</span></div>
-            <div class="card-tags"><span>Agents</span><span>Tools</span><span>In progress</span></div>
+            <div class="card-tags"><span>LangChain</span><span>Tool Calling</span><span>Planned</span></div><span class="project-hover-hint">悬停查看项目介绍 ↗</span>
+            <div class="project-detail" aria-label="Agent 实验室项目介绍">
+              <span class="project-detail-kicker">PROJECT OVERVIEW</span>
+              <h3>Agent 实验室</h3>
+              <dl>
+                <div><dt>用途</dt><dd>计划探索能理解目标并调用工具完成任务的 AI Agent。</dd></div>
+                <div><dt>技术栈</dt><dd>计划使用 LangChain，具体组件待确定。</dd></div>
+                <div><dt>当前进度</dt><dd>尚未开始开发，功能范围和实现方案待规划。</dd></div>
+              </dl>
+              <span class="project-detail-hint">悬停收起 · 项目内容持续补充</span>
+            </div>
           </a>
         </div>
         <div class="domain-note"><span>↳</span> 项目入口：<b>blog.abyssa1.cloud</b> · <b>rag.abyssa1.cloud</b> · <b>agent.abyssa1.cloud</b></div>
@@ -107,6 +138,7 @@
     <footer><a class="brand" href="#home"><span class="brand-mark">A1</span><span>abyssa1 / studio</span></a><span>做点东西，也记录下来。 <b>© 2026</b></span><a href="#home" class="back-top">回到顶部 ↑</a></footer>
   </div>
   <div class="floating-controls" aria-label="页面控制">
+    <button class="back-to-top-float" id="back-to-top-float" type="button" aria-label="返回页面顶部" title="返回顶部" hidden>↑</button>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="外观模式：跟随系统">
       <span class="theme-symbol" aria-hidden="true">◐</span><span class="theme-state">系统</span>
     </button>

@@ -1,3 +1,27 @@
+const backToTopButton = document.querySelector('#back-to-top-float');
+let backToTopVisible = false;
+
+function updateBackToTopVisibility() {
+  const shouldShow = window.scrollY > 480;
+  if (shouldShow === backToTopVisible) return;
+  backToTopVisible = shouldShow;
+  if (shouldShow) {
+    backToTopButton.hidden = false;
+    requestAnimationFrame(() => backToTopButton.classList.add('is-visible'));
+  } else {
+    backToTopButton.classList.remove('is-visible');
+    window.setTimeout(() => {
+      if (!backToTopVisible) backToTopButton.hidden = true;
+    }, 200);
+  }
+}
+
+window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+});
+updateBackToTopVisibility();
+
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.topbar nav');
 
