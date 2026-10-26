@@ -110,12 +110,17 @@
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="外观模式：跟随系统">
       <span class="theme-symbol" aria-hidden="true">◐</span><span class="theme-state">系统</span>
     </button>
+    <div class="music-panel" aria-label="音乐播放控制">
+      <div class="music-panel-top"><span class="music-track-name">未闻花名 · 钢琴版</span><span class="music-time"><span id="music-current-time">0:00</span><span aria-hidden="true"> / </span><span id="music-duration">--:--</span></span></div>
+      <input class="music-range music-progress" id="music-progress" type="range" min="0" max="1000" value="0" aria-label="播放进度" disabled>
+      <div class="music-volume-row"><span aria-hidden="true">♫</span><label for="music-volume">音量</label><input class="music-range music-volume" id="music-volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="音量"></div>
+    </div>
     <button class="music-disc" id="music-toggle" type="button" aria-label="音乐播放器，等待选择歌曲" aria-pressed="false" data-hint="等你选好歌曲，再让唱片转起来">
       <span class="vinyl" aria-hidden="true"><span class="vinyl-label">a1</span></span>
       <span class="music-note" aria-hidden="true">♪</span>
     </button>
   </div>
-  <audio id="background-audio" preload="none" loop></audio>
+  <audio id="background-audio" preload="metadata" loop></audio>
   <div class="control-toast" id="control-toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>

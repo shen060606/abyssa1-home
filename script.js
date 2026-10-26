@@ -86,6 +86,49 @@ if (MUSIC_SOURCE) {
   musicButton.dataset.hint = '播放背景音乐';
 }
 
+const musicProgress = document.querySelector('#music-progress');
+const musicVolume = document.querySelector('#music-volume');
+const currentTimeLabel = document.querySelector('#music-current-time');
+const durationLabel = document.querySelector('#music-duration');
+
+function formatMusicTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return '--:--';
+  const wholeSeconds = Math.floor(seconds);
+  return `${Math.floor(wholeSeconds / 60)}:${String(wholeSeconds % 60).padStart(2, '0')}`;
+}
+
+function updateMusicProgress() {
+  const duration = backgroundAudio.duration;
+  const currentTime = Number.isFinite(backgroundAudio.currentTime) ? backgroundAudio.currentTime : 0;
+  const progress = Number.isFinite(duration) && duration > 0 ? currentTime / duration * 100 : 0;
+  musicProgress.value = String(Math.round(progress * 10));
+  musicProgress.style.setProperty('--range-progress', `${progress}%`);
+  currentTimeLabel.textContent = formatMusicTime(currentTime);
+  durationLabel.textContent = formatMusicTime(duration);
+  musicProgress.disabled = !(Number.isFinite(duration) && duration > 0);
+}
+
+function updateMusicVolume() {
+  const volume = Number(musicVolume.value);
+  backgroundAudio.volume = volume;
+  musicVolume.style.setProperty('--range-progress', `${volume * 100}%`);
+}
+
+musicProgress.addEventListener('input', () => {
+  const duration = backgroundAudio.duration;
+  if (Number.isFinite(duration) && duration > 0) {
+    backgroundAudio.currentTime = Number(musicProgress.value) / 1000 * duration;
+    updateMusicProgress();
+  }
+});
+
+musicVolume.addEventListener('input', updateMusicVolume);
+['loadedmetadata', 'durationchange', 'timeupdate', 'seeked'].forEach((eventName) => {
+  backgroundAudio.addEventListener(eventName, updateMusicProgress);
+});
+backgroundAudio.volume = Number(musicVolume.value);
+updateMusicVolume();
+updateMusicProgress();
 musicButton.addEventListener('click', async () => {
   if (!MUSIC_SOURCE) {
     showControlToast('等你选好歌曲，再把音乐接进来');
