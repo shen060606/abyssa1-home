@@ -280,3 +280,6 @@ body[data-theme="light"] .music-range::-moz-range-thumb{background:#cb5667}
 body[data-theme="light"] .music-volume-toggle{border-color:#806a762c;background:#8a74810e;color:#bf5264}
 @media(max-width:650px){.music-disc{width:64px;height:64px}.vinyl{width:49px;height:49px}.music-dock{width:140px;padding:6px 8px 5px}.music-volume-popover{width:146px;padding:9px 10px}}
 .music-volume-toggle svg{display:block;width:13px;height:13px}
+.music-dock{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
+.music-player.controls-open .music-dock{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+@media(hover:hover) and (pointer:fine){.music-player:hover .music-dock,.music-player:focus-within .music-dock{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}}

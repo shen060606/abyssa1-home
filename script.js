@@ -93,6 +93,22 @@ const durationLabel = document.querySelector('#music-duration');
 const musicVolumeToggle = document.querySelector('#music-volume-toggle');
 const musicVolumePopover = document.querySelector('#music-volume-popover');
 const musicPlayer = document.querySelector('#music-player');
+const touchControls = window.matchMedia('(hover: none) and (pointer: coarse)');
+
+function setPlayerDockExpanded(expanded) {
+  musicButton.setAttribute('aria-expanded', String(expanded));
+}
+
+if (!touchControls.matches) {
+  musicPlayer.addEventListener('mouseenter', () => setPlayerDockExpanded(true));
+  musicPlayer.addEventListener('mouseleave', () => {
+    if (!musicPlayer.contains(document.activeElement)) setPlayerDockExpanded(false);
+  });
+  musicPlayer.addEventListener('focusin', () => setPlayerDockExpanded(true));
+  musicPlayer.addEventListener('focusout', (event) => {
+    if (!musicPlayer.contains(event.relatedTarget)) setPlayerDockExpanded(false);
+  });
+}
 
 function formatMusicTime(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) return '--:--';
@@ -136,12 +152,20 @@ document.addEventListener('click', (event) => {
   if (!musicPlayer.contains(event.target)) {
     musicVolumeToggle.setAttribute('aria-expanded', 'false');
     musicVolumePopover.hidden = true;
+    if (touchControls.matches) {
+      musicPlayer.classList.remove('controls-open');
+      setPlayerDockExpanded(false);
+    }
   }
 });
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     musicVolumeToggle.setAttribute('aria-expanded', 'false');
     musicVolumePopover.hidden = true;
+    if (touchControls.matches) {
+      musicPlayer.classList.remove('controls-open');
+      setPlayerDockExpanded(false);
+    }
   }
 });
 ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked'].forEach((eventName) => {
@@ -151,6 +175,10 @@ backgroundAudio.volume = Number(musicVolume.value);
 updateMusicVolume();
 updateMusicProgress();
 musicButton.addEventListener('click', async () => {
+  if (touchControls.matches) {
+    musicPlayer.classList.add('controls-open');
+    setPlayerDockExpanded(true);
+  }
   if (!MUSIC_SOURCE) {
     showControlToast('等你选好歌曲，再把音乐接进来');
     musicButton.classList.remove('needs-track');
