@@ -90,6 +90,9 @@ const musicProgress = document.querySelector('#music-progress');
 const musicVolume = document.querySelector('#music-volume');
 const currentTimeLabel = document.querySelector('#music-current-time');
 const durationLabel = document.querySelector('#music-duration');
+const musicVolumeToggle = document.querySelector('#music-volume-toggle');
+const musicVolumePopover = document.querySelector('#music-volume-popover');
+const musicPlayer = document.querySelector('#music-player');
 
 function formatMusicTime(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) return '--:--';
@@ -104,6 +107,7 @@ function updateMusicProgress() {
   musicProgress.value = String(Math.round(progress * 10));
   musicProgress.style.setProperty('--range-progress', `${progress}%`);
   currentTimeLabel.textContent = formatMusicTime(currentTime);
+  musicProgress.setAttribute('aria-valuetext', `${formatMusicTime(currentTime)} / ${formatMusicTime(duration)}`);
   durationLabel.textContent = formatMusicTime(duration);
   musicProgress.disabled = !(Number.isFinite(duration) && duration > 0);
 }
@@ -123,6 +127,23 @@ musicProgress.addEventListener('input', () => {
 });
 
 musicVolume.addEventListener('input', updateMusicVolume);
+musicVolumeToggle.addEventListener('click', () => {
+  const isOpen = musicVolumeToggle.getAttribute('aria-expanded') === 'true';
+  musicVolumeToggle.setAttribute('aria-expanded', String(!isOpen));
+  musicVolumePopover.hidden = isOpen;
+});
+document.addEventListener('click', (event) => {
+  if (!musicPlayer.contains(event.target)) {
+    musicVolumeToggle.setAttribute('aria-expanded', 'false');
+    musicVolumePopover.hidden = true;
+  }
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    musicVolumeToggle.setAttribute('aria-expanded', 'false');
+    musicVolumePopover.hidden = true;
+  }
+});
 ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked'].forEach((eventName) => {
   backgroundAudio.addEventListener(eventName, updateMusicProgress);
 });

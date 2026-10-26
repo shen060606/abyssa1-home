@@ -254,24 +254,28 @@ body[data-theme="light"] .about.section:after{content:"";position:absolute;z-ind
 .project-card .card-tags{margin-top:18px}
 @media(max-width:900px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 @media(max-width:650px){.project-grid{grid-template-columns:1fr;gap:14px}.project-card{padding:17px}}
-/* Floating audio progress and volume controls */
-.music-panel{position:fixed;z-index:100;right:114px;bottom:26px;width:min(250px,calc(100vw - 124px));padding:12px 14px;border:1px solid #ffffff30;border-radius:14px;background:#17141de8;color:#f7e9df;box-shadow:0 10px 34px #0008,0 0 24px #ff58631a;backdrop-filter:blur(14px)}
-.music-panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
-.music-track-name{overflow:hidden;color:#fff1e8;font:10px 'Noto Sans SC',sans-serif;text-overflow:ellipsis;white-space:nowrap}
-.music-time{flex:0 0 auto;color:#c9b7b4;font:8px var(--mono);font-variant-numeric:tabular-nums}
-.music-range{display:block;width:100%;height:4px;margin:11px 0 9px;appearance:none;border:0;border-radius:99px;background:linear-gradient(90deg,#ff858a var(--range-progress,0%),#ffffff25 var(--range-progress,0%));cursor:pointer}
+/* Turntable-integrated progress dock with an expandable volume control. */
+.music-player{position:relative;display:flex;flex-direction:column;align-items:center}
+.music-disc:hover{transform:none}
+.music-dock{position:relative;width:156px;margin-top:-1px;padding:7px 9px 6px;border:1px solid #ffffff30;border-top:0;border-radius:0 0 13px 13px;background:#17141de8;color:#f7e9df;box-shadow:0 10px 30px #0007,0 0 20px #ff58631a;backdrop-filter:blur(14px)}
+.music-progress-row{display:flex;align-items:center;gap:7px}
+.music-range{display:block;height:4px;appearance:none;border:0;border-radius:99px;background:linear-gradient(90deg,#ff858a var(--range-progress,0%),#ffffff25 var(--range-progress,0%));cursor:pointer}
+.music-progress{flex:1;min-width:0;width:100%;margin:4px 0}
 .music-range::-webkit-slider-thumb{width:10px;height:10px;appearance:none;border:1px solid #fff3;border-radius:50%;background:#ff9a91;box-shadow:0 0 8px #ff6f7a80}
 .music-range::-moz-range-thumb{width:9px;height:9px;border:1px solid #fff3;border-radius:50%;background:#ff9a91;box-shadow:0 0 8px #ff6f7a80}
-.music-range:focus-visible{outline:2px solid #ffd69a;outline-offset:4px}
+.music-range:focus-visible,.music-volume-toggle:focus-visible{outline:2px solid #ffd69a;outline-offset:3px}
 .music-range:disabled{cursor:default;opacity:.45}
-.music-volume-row{display:flex;align-items:center;gap:8px;color:#d8c9c5;font-size:9px}
-.music-volume-row>span{color:#ffaaa0;font-size:12px}
-.music-volume-row label{flex:0 0 auto}
-.music-volume{flex:1;margin:0}
-body[data-theme="light"] .music-panel{border-color:#6f5a5a30;background:#fffaf3f2;color:#302b34;box-shadow:0 10px 34px #41354a2b,0 0 24px #e6686818}
-body[data-theme="light"] .music-track-name{color:#302b34}
-body[data-theme="light"] .music-time,body[data-theme="light"] .music-volume-row{color:#6c5d67}
+.music-time-row{display:flex;justify-content:space-between;margin-top:3px;color:#c9b7b4;font:7px var(--mono);font-variant-numeric:tabular-nums}
+.music-volume-toggle{flex:0 0 22px;width:22px;height:22px;display:grid;place-items:center;padding:0;border:1px solid #ffffff25;border-radius:50%;background:#ffffff0b;color:#ffaaa0;font-size:11px;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.music-volume-toggle:hover,.music-volume-toggle[aria-expanded="true"]{border-color:#ff9a91a0;background:#ff858a20;transform:scale(1.06)}
+.music-volume-popover{position:absolute;right:calc(100% + 8px);bottom:0;display:flex;align-items:center;gap:9px;width:154px;padding:10px 12px;border:1px solid #ffffff30;border-radius:12px;background:#17141df2;color:#eadbd5;box-shadow:0 9px 28px #0008;backdrop-filter:blur(14px)}
+.music-volume-popover[hidden]{display:none}
+.music-volume-popover label{flex:0 0 auto;font-size:9px}
+.music-volume{flex:1;min-width:0;width:100%;margin:0}
+body[data-theme="light"] .music-dock,body[data-theme="light"] .music-volume-popover{border-color:#6f5a5a30;background:#fffaf3f2;color:#302b34;box-shadow:0 10px 30px #41354a2b}
+body[data-theme="light"] .music-time-row{color:#786a75}
 body[data-theme="light"] .music-range{background:linear-gradient(90deg,#cb5667 var(--range-progress,0%),#5c4b5b28 var(--range-progress,0%))}
 body[data-theme="light"] .music-range::-webkit-slider-thumb{background:#cb5667}
 body[data-theme="light"] .music-range::-moz-range-thumb{background:#cb5667}
-@media(max-width:650px){.music-panel{right:90px;bottom:15px;width:min(210px,calc(100vw - 108px));padding:10px 11px;border-radius:12px}.music-track-name{font-size:9px}.music-time{font-size:7px}.music-range{margin:10px 0 8px}}
+body[data-theme="light"] .music-volume-toggle{border-color:#806a762c;background:#8a74810e;color:#bf5264}
+@media(max-width:650px){.music-disc{width:64px;height:64px}.vinyl{width:49px;height:49px}.music-dock{width:140px;padding:6px 8px 5px}.music-volume-popover{width:146px;padding:9px 10px}}
