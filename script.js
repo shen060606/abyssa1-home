@@ -275,11 +275,9 @@ if (quoteText) {
   const dayNumber = Math.floor(Date.UTC(localMidnight.getFullYear(), localMidnight.getMonth(), localMidnight.getDate()) / 86400000);
   const quoteIndex = ((dayNumber % dailyThoughts.length) + dailyThoughts.length) % dailyThoughts.length;
   const quoteDate = document.querySelector('#daily-quote-date');
-  const quoteCount = document.querySelector('#daily-quote-count');
 
   quoteText.textContent = dailyThoughts[quoteIndex];
   quoteDate.textContent = new Intl.DateTimeFormat('zh-CN', {
     year: 'numeric', month: 'long', day: 'numeric'
   }).format(now);
-  quoteCount.textContent = `DAY ${String(quoteIndex + 1).padStart(2, '0')} / ${dailyThoughts.length}`;
 }
