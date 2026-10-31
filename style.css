@@ -313,3 +313,12 @@ body[data-theme="light"] .project-detail-hint{border-color:#55445824;color:#766d
 @media(hover:none),(pointer:coarse){.project-detail{position:relative;inset:auto;display:flex;margin:16px -20px -20px;padding:18px 20px 16px;opacity:1;transform:none;pointer-events:auto;border-top:1px solid #ffffff20}.project-hover-hint{display:none}}
 @media(max-width:650px){.project-detail{position:relative;inset:auto;display:flex;margin:16px -17px -17px;padding:18px 17px 16px;opacity:1;transform:none;pointer-events:auto;border-top:1px solid #ffffff20;background:linear-gradient(145deg,#101820f2,#17141ff5 72%,#241a29f5)}.project-detail h3{font-size:16px;margin:7px 0 12px}.project-detail dl{gap:9px}.project-detail dd{font-size:10px}.project-detail-hint{margin-top:14px}body[data-theme="light"] .project-detail{background:linear-gradient(145deg,#fffaf7,#f4eff7 72%,#edeffa);border-color:#5d4b5520}}
 @media(prefers-reduced-motion:reduce){.project-detail{transition:none}}
+
+/* Improve readability of project tags and supporting labels. */
+.project-card .card-tags span{padding:7px 10px;border:1px solid color-mix(in srgb,var(--card-accent) 42%,#ffffff20);border-radius:5px;background:color-mix(in srgb,var(--card-accent) 16%,#111820);color:#e4dfe6;font:500 10px/1.35 var(--sans);letter-spacing:.01em}
+body[data-theme="light"] .project-card .card-tags span{border-color:color-mix(in srgb,var(--card-accent) 34%,white);background:color-mix(in srgb,var(--card-accent) 11%,white);color:#4b414d}
+.project-card .status{font-size:9px}
+.project-hover-hint{color:#c7bdc7;font:500 10px/1.4 var(--sans);letter-spacing:.01em}
+body[data-theme="light"] .project-hover-hint{color:#655968}
+.project-detail-hint{color:#c7bdc7;font:500 9px/1.5 var(--sans);letter-spacing:0}
+body[data-theme="light"] .project-detail-hint{color:#655968}
