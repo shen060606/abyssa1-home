@@ -322,3 +322,12 @@ body[data-theme="light"] .project-card .card-tags span{border-color:color-mix(in
 body[data-theme="light"] .project-hover-hint{color:#655968}
 .project-detail-hint{color:#c7bdc7;font:500 9px/1.5 var(--sans);letter-spacing:0}
 body[data-theme="light"] .project-detail-hint{color:#655968}
+
+/* ICP filing information */
+footer{height:auto;min-height:112px;flex-wrap:wrap;padding:15px 0 12px}
+footer .footer-icp{flex:0 0 100%;display:flex;justify-content:center;align-items:center;padding-top:3px}
+footer .footer-icp a{font:10px var(--sans);color:#9aa197;text-decoration:none;transition:color .2s}
+footer .footer-icp a:hover{text-decoration:underline;color:#6f7b6b}
+body[data-theme="light"] footer .footer-icp a{color:#696570}
+body[data-theme="light"] footer .footer-icp a:hover{color:#914c5b}
+@media(max-width:650px){footer{gap:12px;padding:18px 0 14px}footer .footer-icp{padding-top:2px}footer .footer-icp a{font-size:10px}}
